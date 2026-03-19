@@ -16,6 +16,21 @@ namespace G_Net_40_ADV02
                 action(product);
             }
         }
-    }
     #endregion
-}
+        #region Task 3.2
+        public static List<T> TransformProducts<T>(List<Product> products, Func<Product, T> transformer)
+        {
+            List<T> result = new List<T>();
+
+            foreach (var product in products)
+            {
+                result.Add(transformer(product)); 
+            }
+
+            return result;
+        }
+        #endregion
+    }
+    }
+
+

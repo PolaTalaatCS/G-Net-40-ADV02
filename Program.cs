@@ -53,7 +53,22 @@
                 Report.Printreport(catalog, p => Console.WriteLine($" [{p.Category}]{p.Name} | {p.Price} | {p.Stock}"));
 
             #endregion
+            #region Task 3.1
+            var summaryList = Report.TransformProducts(catalog, p => $"{p.Name} (${p.Price})");
 
+            Console.WriteLine("======Summary List======");
+            foreach (var line in summaryList)
+            {
+                Console.WriteLine(line);
+            }
+            var priceLabels = Report.TransformProducts(catalog, p => $"{p.Name}: {(p.Price > 100 ? "Expensive!" : "Affordable")}");
+
+            Console.WriteLine("=== Price Labels ===");
+            foreach (var line in priceLabels)
+            {
+                Console.WriteLine(line);
+            }
+            #endregion
         }
     }
 }
