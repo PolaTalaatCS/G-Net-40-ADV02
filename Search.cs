@@ -8,18 +8,18 @@ namespace G_Net_40_ADV02
 {
     public class Search
     {
-        public static List<Product> SearchProduct(List<Product> products, Func<Product, bool> selector)
+        public static List<Product> SearchProduct(List<Product> products, Func<Product, bool> select)
         {
-            List<Product> result = new List<Product>();
-            foreach (Product product in products)
+            List<Product> Result = new List<Product>();
+            foreach (Product aproduct in products)
             {
-                if (selector(product))
+                if (select(aproduct))
                 {
-                    result.Add(product);
+                    Result.Add(aproduct);
                 }
                 
             }
-            return result;
+            return Result;
         }
     }
 }
