@@ -25,7 +25,7 @@
             Console.WriteLine("===============Electronics=============");
                 foreach(var item  in electorncs)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.Name);
             }
             Console.WriteLine("========= Under 50 =======");
             foreach (var item in underfifydollar)
@@ -44,6 +44,13 @@
             {
                 Console.WriteLine(item.Name);
             }
+
+            #endregion
+            #region Task 3.1 
+            Console.WriteLine("Short report");
+            Report.Printreport(catalog, p => Console.WriteLine($"{p.Name} - {p.Price}\n"));
+            Console.WriteLine("detailed report");
+                Report.Printreport(catalog, p => Console.WriteLine($" [{p.Category}]{p.Name} | {p.Price} | {p.Stock}"));
 
             #endregion
 
