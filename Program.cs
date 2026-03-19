@@ -4,9 +4,10 @@
     {
         static void Main(string[] args)
         {
+            #region Task 1
             List<Product> catalog = new()
             {
-                new Product { Id = 1, Name = "Laptop", Category = "Electronics", Price = 1200, Stock = 10 },
+               new Product { Id = 1, Name = "Laptop", Category = "Electronics", Price = 1200, Stock = 10 },
                 new Product { Id = 2, Name = "Phone", Category = "Electronics", Price = 800, Stock = 25 },
                 new Product { Id = 3, Name = "T-Shirt", Category = "Clothing", Price = 30, Stock = 100 },
                 new Product { Id = 4, Name = "Jeans", Category = "Clothing", Price = 60, Stock = 50 },
@@ -17,11 +18,57 @@
                 new Product { Id = 9, Name = "Headphones", Category = "Electronics", Price = 150, Stock = 40 },
                 new Product { Id = 10, Name = "Jacket", Category = "Clothing", Price = 120, Stock = 15 }
             };
-            var electornics = Search.SearchProduct(catalog, p => p.Category == "Electronics");
-            var underfiftydollar = Search.SearchProduct(catalog, p => p.Price < 50);
-            var Instock = Search.SearchProduct(catalog, p => p.Stock > 0);
-            var clothingprice = Search.SearchProduct(catalog,p=> p.Price < 100 && p.Category== "Clothing");
+            var electorncs = Search.SearchProduct(catalog, p => p.Category == "Electronics");
+            var underfifydollar = Search.SearchProduct(catalog, p => p.Price < 50);
+            var Instok = Search.SearchProduct(catalog, p => p.Stock > 0);
+            var clothingprice = Search.SearchProduct(catalog, p => p.Price < 100 && p.Category == "Clothing");
+            Console.WriteLine("===============Electronics=============");
+                foreach(var item  in electorncs)
+            {
+                Console.WriteLine(item.Name);
+            }
+            Console.WriteLine("========= Under 50 =======");
+            foreach (var item in underfifydollar)
+            {
+                Console.WriteLine(item.Name);
+            }
 
+            Console.WriteLine("========= In Stock=======");
+            foreach (var item in Instok)
+            {
+                Console.WriteLine(item.Name);
+            }
+
+            Console.WriteLine("=========Clothing < 100=======");
+            foreach (var item in clothingprice)
+            {
+                Console.WriteLine(item.Name);
+            }
+
+            #endregion
+            #region Task 3.1 
+            Console.WriteLine("Short report");
+            Report.Printreport(catalog, p => Console.WriteLine($"{p.Name} - {p.Price}\n"));
+            Console.WriteLine("detailed report");
+                Report.Printreport(catalog, p => Console.WriteLine($" [{p.Category}]{p.Name} | {p.Price} | {p.Stock}"));
+
+            #endregion
+            #region Task 3.1
+            var summaryList = Report.TransformProducts(catalog, p => $"{p.Name} (${p.Price})");
+
+            Console.WriteLine("======Summary List======");
+            foreach (var line in summaryList)
+            {
+                Console.WriteLine(line);
+            }
+            var priceLabels = Report.TransformProducts(catalog, p => $"{p.Name}: {(p.Price > 100 ? "Expensive!" : "Affordable")}");
+
+            Console.WriteLine("=== Price Labels ===");
+            foreach (var line in priceLabels)
+            {
+                Console.WriteLine(line);
+            }
+            #endregion
         }
     }
 }
